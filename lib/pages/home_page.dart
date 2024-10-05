@@ -35,7 +35,7 @@ class _HomePage1State extends State<HomePage1> {
 
 
      // Call the TTS welcome message here
-    _welcomeMessage();
+    // _welcomeMessage();
   }
 
 
@@ -176,7 +176,7 @@ class _HomePage1State extends State<HomePage1> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Video Calls', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.blue,
         centerTitle: true,
         actions: [
           IconButton(
@@ -348,7 +348,7 @@ class _HomePage1State extends State<HomePage1> {
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
         ),
         icon: const Icon(Icons.add),
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.blue,
       ),
     );
   }

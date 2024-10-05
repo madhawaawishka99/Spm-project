@@ -4,6 +4,7 @@ import 'package:spm_project/component/drawer.dart';
 import 'package:spm_project/component/voice.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart'; // For handling time-based greetings
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,11 +16,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   FlutterTts flutterTts = FlutterTts();
   String username = 'User';
+  String greetingMessage = 'Hello'; // Default greeting
 
   @override
   void initState() {
     super.initState();
     getUsernameAndGreet();
+    updateGreetingMessage(); // Update greeting based on time of day
   }
 
   Future<void> getUsernameAndGreet() async {
@@ -40,12 +43,26 @@ class _HomePageState extends State<HomePage> {
           });
 
           // Greet the user using TTS
-          await _speak("Hello, $username. You are on the home page.");
+          await _speak("$greetingMessage, $username. You are on the home page.");
         }
       }
     } catch (e) {
       print("Error fetching user data: $e");
     }
+  }
+
+  void updateGreetingMessage() {
+    final hour = DateTime.now().hour;
+
+    if (hour < 12) {
+      greetingMessage = 'Good Morning';
+    } else if (hour < 18) {
+      greetingMessage = 'Good Afternoon';
+    } else {
+      greetingMessage = 'Good Evening';
+    }
+
+    setState(() {}); // Update the UI after setting the greeting
   }
 
   Future<void> _speak(String text) async {
@@ -56,82 +73,108 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("HOME"),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      drawer: const CustomDrawer(),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              "Hi $username!",
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("HOME"),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+        drawer: const CustomDrawer(),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "$greetingMessage, $username!",
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          const SizedBox(height: 10),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(16.0),
-              children: <Widget>[
-                _buildNavigationCard('Profile', Icons.person, '/profile_page'),
-                // _buildNavigationCard('Fruits', Icons.apple, '/fruits_obj'),
-                // _buildNavigationCard('Vegetables', Icons.food_bank, '/vegetables_obj'),
-                // _buildNavigationCard('Packages', Icons.shop, '/packages_obj'),
-                _buildNavigationCard('Objects', Icons.category, '/objects_page'),
-                _buildNavigationCard('Emergency Assistant', Icons.chat, '/tutor_list_page'),
-                _buildNavigationCard('Saved Object', Icons.save, '/display_shape_obj'),
-                _buildNavigationCard('Video call Navigation', Icons.video_call, '/home_page1'),
-                _buildNavigationCard('Community Space', Icons.person, '/community_page'),
-              ],
+            const SizedBox(height: 10),
+            Expanded(
+              child: GridView.builder(
+                padding: const EdgeInsets.all(16.0),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, // Two rectangles per row
+                  crossAxisSpacing: 16.0,
+                  mainAxisSpacing: 16.0,
+                  childAspectRatio: 1, // Square cards
+                ),
+                itemCount: 6, // Number of navigation cards
+                itemBuilder: (context, index) {
+                  // Map index to your navigation cards
+                  final navigationItems = [
+                    ['Profile', 'assets/homeicons/profile.png', '/profile_page'],
+                    ['Objects', 'assets/homeicons/objectidentification.png', '/objects_page'],
+                    ['Emergency', 'assets/homeicons/emergency.png', '/tutor_list_page'],
+                    ['Saved Object', 'assets/homeicons/savedobjects.png', '/display_shape_obj'],
+                    ['Video call', 'assets/homeicons/videocall.png', '/home_page1'],
+                    ['Community', 'assets/homeicons/community.png', '/community_page'],
+                  ];
+
+                  return _buildNavigationCard(
+                    navigationItems[index][0], // Text
+                    navigationItems[index][1], // Image path
+                    navigationItems[index][2], // Route
+                  );
+                },
+              ),
             ),
-          ),
-          SpeechButton(
-            onCaptureCommand: () {},
-          ),
-        ],
+            SpeechButton(
+              onCaptureCommand: () {},
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  // Helper method to build navigation cards
-  Widget _buildNavigationCard(String text, IconData icon, String route) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Card(
-        elevation: 4.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, route);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Icon(icon, size: 40, color: Colors.purple),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Text(
-                    text,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
+  // Helper method to build navigation cards with images
+  Widget _buildNavigationCard(String text, String imagePath, String route) {
+    return Card(
+      elevation: 4.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, route);
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Display the image in the center
+              Expanded(
+                child: Center(
+                  child: Image.asset(
+                    imagePath,
+                    fit: BoxFit.contain, // Ensure the image fits properly
+                    height: 80, // Set the desired size for the image
+                    width: 80,
                   ),
                 ),
-                const Icon(Icons.arrow_forward_ios, size: 20),
-              ],
-            ),
+              ),
+              const SizedBox(height: 10),
+              // Align the text at the bottom of the card
+              Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ),
       ),

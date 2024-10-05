@@ -120,7 +120,7 @@ class _SpeechButtonState extends State<SpeechButton> {
     } else if (command.contains('video')) {
       Navigator.pushNamed(context, '/home_page1');
       _speak("Navigating to Video call screen");
-    } else if (command.contains('voice')) {
+    } else if (command.contains('Emergency')) {
       Navigator.pushNamed(context, '/tutor_list_page');
       _speak("Navigating to emergency page");
     } else {
@@ -175,7 +175,7 @@ class _SpeechButtonState extends State<SpeechButton> {
                         onPressed: _startListening,
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         label: Text(
-                          _speechToText.isListening ? "Listening..." : "Tap to Speak",
+                          _speechToText.isListening ? "Listening..." : "Speak",
                           style: const TextStyle(color: Colors.white),
                         ),
                         icon: Icon(
