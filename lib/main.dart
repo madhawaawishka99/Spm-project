@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:spm_project/auth/auth.dart';
 import 'package:spm_project/auth/loginOrRegister.dart';
 import 'package:spm_project/firebase_options.dart';
+import 'package:spm_project/pages/community_page.dart';
 import 'package:spm_project/pages/help.dart';
 import 'package:spm_project/pages/home.dart';
 import 'package:spm_project/pages/objects_detection/package_obj.dart';
@@ -40,8 +41,8 @@ class MyApp extends StatelessWidget {
         '/display_shape_obj': (context) => const DisplayShapes(),
         '/help_page': (context) => const HelpScreen(),
         '/tutor_list_page': (context) => const TutorListPage(), // Added route
-        '/home_page': (context) => const HomePage1(), // Added route
-
+        '/home_page1': (context) => const HomePage1(), // Added route
+        '/community_page': (context) => const CommunityPage(),
       },
     );
   }
