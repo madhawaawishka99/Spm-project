@@ -23,6 +23,10 @@ class _HelpScreenState extends State<HelpScreen> {
     "Save - Navigating to Object Save Page",
     "Capture - Capturing the image",
     "Logout - Logout from the account",
+    "Community - Navigating to Community Page",
+    "Voice Note - Navigating to Voice Note Page",
+    "Video - Navigating to Video call screen",
+    "Emergency - Navigating to emergency page",
   ];
 
   Future<void> _generatePdf() async {
@@ -33,13 +37,9 @@ class _HelpScreenState extends State<HelpScreen> {
         build: (pw.Context context) => pw.Column(
           crossAxisAlignment: pw.CrossAxisAlignment.start,
           children: [
-            pw.Text('Voice Navigation Commands',
-                style:
-                    pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold)),
+            pw.Text('Voice Navigation Commands', style: pw.TextStyle(fontSize: 24, fontWeight: pw.FontWeight.bold)),
             pw.SizedBox(height: 20),
-            ...voiceCommands
-                .map((command) => pw.Bullet(text: command))
-                ,
+            ...voiceCommands.map((command) => pw.Bullet(text: command)),
           ],
         ),
       ),
@@ -80,10 +80,7 @@ class _HelpScreenState extends State<HelpScreen> {
             children: [
               const Text(
                 "Welcome to iShop!",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1F276F)),
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Color(0xFF1F276F)),
               ),
               const SizedBox(height: 16),
               const Text(
@@ -91,14 +88,10 @@ class _HelpScreenState extends State<HelpScreen> {
                 style: TextStyle(fontSize: 18),
               ),
               const SizedBox(height: 10),
-              _buildFeatureDescription("Voice Navigation",
-                  "Use voice commands to navigate throughout the app."),
-              _buildFeatureDescription("Object Detection",
-                  "Detect objects using your device's camera with AI."),
-              _buildFeatureDescription("AI Chat Bot",
-                  "Interact with an AI-powered chatbot for instant help."),
-              _buildFeatureDescription("Quiz",
-                  "Test your knowledge through various quizzes available in the app."),
+              _buildFeatureDescription("Voice Navigation", "Use voice commands to navigate throughout the app."),
+              _buildFeatureDescription("Object Detection", "Detect objects using your device's camera with AI."),
+              _buildFeatureDescription("AI Chat Bot", "Interact with an AI-powered chatbot for instant help."),
+              _buildFeatureDescription("Quiz", "Test your knowledge through various quizzes available in the app."),
               const SizedBox(height: 20),
               const Text(
                 "Voice Navigation Commands:",
