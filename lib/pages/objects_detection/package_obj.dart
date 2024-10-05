@@ -90,7 +90,7 @@ class _packageObjState extends State<packageObj> {
     await _databaseHelper.saveDetectedShape(filePath, label);
 
     // Add a small delay to ensure label is updated before navigating
-    //await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(const Duration(milliseconds: 300));
   }
 
   void _speak(String text) async {

@@ -73,16 +73,20 @@ class _SpeechButtonState extends State<SpeechButton> {
       Navigator.pushNamed(context, '/home_page');
       _speak("Navigating to Home Page");
       _stopListening(); // Stop after correct command
+    } else if (command.contains('objects')) {
+      Navigator.pushNamed(context, '/objects_page');
+      _speak("Navigating to Objects Page");
+      _stopListening(); // Stop after correct command 
     } else if (command.contains('fruits')) {
-      Navigator.pushNamed(context, '/fruits_obj');
+      Navigator.pushNamed(context, 'objects_page/fruits_obj');
       _speak("Navigating to Fruits Object Page");
       _stopListening(); // Stop after correct command
     } else if (command.contains('vegetables')) {
-      Navigator.pushNamed(context, '/vegetables_obj');
+      Navigator.pushNamed(context, 'objects_page/vegetables_obj');
       _speak("Navigating to Vegetables Object Page");
       _stopListening(); // Stop after correct command
     } else if (command.contains('packages')) {
-      Navigator.pushNamed(context, '/packages_obj');
+      Navigator.pushNamed(context, 'objects_page/packages_obj');
       _speak("Navigating to Packages Object Page");
       _stopListening(); // Stop after correct command
     } else if (command.contains('save')) {
@@ -114,7 +118,7 @@ class _SpeechButtonState extends State<SpeechButton> {
       _speak("Navigating to Help Page");
       // Stop after correct command
     } else if (command.contains('video')) {
-      Navigator.pushNamed(context, '/home_page');
+      Navigator.pushNamed(context, '/home_page1');
       _speak("Navigating to Video call screen");
     } else if (command.contains('voice')) {
       Navigator.pushNamed(context, '/tutor_list_page');
