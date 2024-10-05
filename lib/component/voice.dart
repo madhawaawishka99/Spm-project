@@ -114,7 +114,7 @@ class _SpeechButtonState extends State<SpeechButton> {
       _speak("Navigating to Help Page");
       // Stop after correct command
     } else if (command.contains('video')) {
-      Navigator.pushNamed(context, '/home_page');
+      Navigator.pushNamed(context, '/home_page1');
       _speak("Navigating to Video call screen");
     } else if (command.contains('voice')) {
       Navigator.pushNamed(context, '/tutor_list_page');
