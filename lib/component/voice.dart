@@ -120,7 +120,7 @@ class _SpeechButtonState extends State<SpeechButton> {
     } else if (command.contains('video')) {
       Navigator.pushNamed(context, '/home_page1');
       _speak("Navigating to Video call screen");
-    } else if (command.contains('Emergency')) {
+    } else if (command.contains('emergency')) {
       Navigator.pushNamed(context, '/tutor_list_page');
       _speak("Navigating to emergency page");
     } else {
