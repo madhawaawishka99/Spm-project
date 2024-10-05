@@ -73,6 +73,10 @@ class _SpeechButtonState extends State<SpeechButton> {
       Navigator.pushNamed(context, '/home_page');
       _speak("Navigating to Home Page");
       _stopListening(); // Stop after correct command
+    } else if (command.contains('objects')) {
+      Navigator.pushNamed(context, '/objects_page');
+      _speak("Navigating to Objects Page");
+      _stopListening(); // Stop after correct command 
     } else if (command.contains('fruits')) {
       Navigator.pushNamed(context, '/fruits_obj');
       _speak("Navigating to Fruits Object Page");

@@ -3,6 +3,7 @@ import 'package:camera/camera.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tflite/flutter_tflite.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'dart:developer' as devtools;
 import 'package:spm_project/component/button.dart';
 import 'package:spm_project/component/voice.dart';
@@ -27,6 +28,7 @@ class _vegetableObjState extends State<vegetableObj> {
   bool _modelLoaded = false;
 
   final CameraHelper _cameraHelper = CameraHelper();
+  final FlutterTts _flutterTts = FlutterTts();
   final DatabaseHelper _databaseHelper = DatabaseHelper();
 
   Future<void> _tfliteInit() async {
@@ -80,6 +82,7 @@ class _vegetableObjState extends State<vegetableObj> {
     setState(() {
       label = newLabel;
     });
+    _speak("Detected object: $label");
   }
 
   
@@ -99,6 +102,23 @@ class _vegetableObjState extends State<vegetableObj> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('No object detected yet!')),
       );
+    }
+  }
+
+  void _speak(String text) async {
+    if (text.isNotEmpty) {
+      await _flutterTts.stop();
+      await _flutterTts.setLanguage("en-US");
+      await _flutterTts.setSpeechRate(0.5);
+      await _flutterTts.setVolume(1.0);
+      await _flutterTts.setPitch(1.0);
+
+      int result = await _flutterTts.speak(text);
+      if (result == 1) {
+        devtools.log("Speech started");
+      } else {
+        devtools.log("Speech failed");
+      }
     }
   }
 

@@ -28,7 +28,7 @@ class TutorListPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Available Sales man'),
+        title: const Text('Available Salesmen'),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),

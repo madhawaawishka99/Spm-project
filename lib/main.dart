@@ -11,6 +11,7 @@ import 'package:spm_project/pages/objects_detection/package_obj.dart';
 import 'package:spm_project/pages/objects_detection/display_shape.dart';
 import 'package:spm_project/pages/objects_detection/fruit_object.dart';
 import 'package:spm_project/pages/objects_detection/vegetable_obj.dart';
+import 'package:spm_project/pages/objects_page.dart';
 import 'package:spm_project/pages/profile.dart';
 import 'package:spm_project/pages/home_page.dart';
 
@@ -34,8 +35,9 @@ class MyApp extends StatelessWidget {
       theme: colorMode,
       routes: {
         '/login_register_page': (context) => const LoginOrRegister(),
-        // '/home_page': (context) => const HomePage1(),
+        '/home_page': (context) => const HomePage(),
         '/profile_page': (context) => const ProfilePage(),
+        '/objects_page': (context) => const ObjectsPage(),
         '/fruits_obj': (context) => const fruitObj(),
         '/vegetables_obj': (context) => const vegetableObj(),
         '/packages_obj': (context) => const packageObj(),
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
         '/home_page1': (context) => const HomePage1(), // Added route
         '/community_page': (context) => const CommunityPage(),
         '/login': (context) => const LoginPage(onTap: null),
-        // '/home_page': (context) => const HomePage1(),
+        
       },
     );
   }
