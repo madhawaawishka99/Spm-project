@@ -226,10 +226,12 @@ class _ProfilePageState extends State<ProfilePage> {
                           borderRadius: BorderRadius.circular(24),
                         ),
                         padding: const EdgeInsets.all(25),
-                        child: const Icon(
-                          Icons.person,
-                          size: 64,
-                        ),
+                        child: Image.asset(
+            'assets/homeicons/profile.png', // Path to your image
+            height: 124, // Set the desired height
+            width: 124,  // Set the desired width
+            fit: BoxFit.cover, // Ensures the image fits within the container
+          ),
                       ),
                       const SizedBox(height: 25),
                       CustomTextField(

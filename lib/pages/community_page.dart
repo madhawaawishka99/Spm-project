@@ -201,7 +201,7 @@ class _CommunityPageState extends State<CommunityPage> {
               margin: const EdgeInsets.only(bottom: 20.0),
               child: Card(
                 elevation: 10.0,
-                shadowColor: Colors.deepPurple.withOpacity(0.2),
+                shadowColor: Colors.blue.withOpacity(0.2),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
@@ -218,7 +218,7 @@ class _CommunityPageState extends State<CommunityPage> {
                               style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.deepPurple,
+                                color: Colors.blue,
                               ),
                             ),
                           ),
@@ -322,7 +322,7 @@ class _CommunityPageState extends State<CommunityPage> {
                           },
                           child: const Icon(
                             Icons.volume_up,
-                            color: Colors.blueAccent,
+                            color: Colors.blue,
                             size: 30, // Size of the TTS icon
                           ),
                         ),
@@ -361,7 +361,7 @@ class _CommunityPageState extends State<CommunityPage> {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Employee()));
         },
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(
           borderRadius:
               BorderRadius.circular(15), // More rounded corners for the button
@@ -379,7 +379,7 @@ class _CommunityPageState extends State<CommunityPage> {
         ),
       ),
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blue,
         elevation: 8, // Gives a subtle shadow effect
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -572,7 +572,7 @@ class _CommunityPageState extends State<CommunityPage> {
                       child: Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.deepPurple,
+                          color: Colors.blue,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Text(

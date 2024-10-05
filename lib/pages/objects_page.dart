@@ -14,13 +14,30 @@ class ObjectsPage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: ListView(
+            child: GridView.builder(
               padding: const EdgeInsets.all(16.0),
-              children: <Widget>[
-                _buildObjectCard('Fruits', Icons.apple, '/fruits_obj', context),
-                _buildObjectCard('Vegetables', Icons.food_bank, '/vegetables_obj', context),
-                _buildObjectCard('Packages', Icons.shop, '/packages_obj', context),
-              ],
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // Two items per row
+                crossAxisSpacing: 16.0,
+                mainAxisSpacing: 16.0,
+                childAspectRatio: 1, // Make cards square
+              ),
+              itemCount: 3, // Total number of object cards
+              itemBuilder: (context, index) {
+                // Define the objects and their routes
+                final objectItems = [
+                  ['Fruits', 'assets/homeicons/fruits.png', '/fruits_obj'],
+                  ['Vegetables', 'assets/homeicons/vegetables.png', '/vegetables_obj'],
+                  ['Packages', 'assets/homeicons/packages.png', '/packages_obj'],
+                ];
+
+                return _buildObjectCard(
+                  objectItems[index][0] as String,
+                  objectItems[index][1] as String,
+                  objectItems[index][2] as String,
+                  context,
+                );
+              },
             ),
           ),
           SpeechButton(
@@ -32,36 +49,37 @@ class ObjectsPage extends StatelessWidget {
   }
 
   // Helper method to build object cards
-  Widget _buildObjectCard(String text, IconData icon, String route, BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Card(
-        elevation: 4.0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, route);
-          },
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Icon(icon, size: 40, color: Colors.purple),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Text(
-                    text,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+  Widget _buildObjectCard(String text, String imagePath, String route, BuildContext context) {
+    return Card(
+      elevation: 4.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, route);
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Replace Icon with Image.asset to display custom images
+              Image.asset(
+                imagePath,
+                height: 80, // Set the desired size for the image
+                width: 80,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                text,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
-                const Icon(Icons.arrow_forward_ios, size: 20),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
