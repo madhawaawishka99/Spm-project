@@ -38,9 +38,9 @@ class MyApp extends StatelessWidget {
         '/home_page': (context) => const HomePage(),
         '/profile_page': (context) => const ProfilePage(),
         '/objects_page': (context) => const ObjectsPage(),
-        '/fruits_obj': (context) => const fruitObj(),
-        '/vegetables_obj': (context) => const vegetableObj(),
-        '/packages_obj': (context) => const packageObj(),
+        'objects_page/fruits_obj': (context) => const fruitObj(),
+        'objects_page/vegetables_obj': (context) => const vegetableObj(),
+        'objects_page/packages_obj': (context) => const packageObj(),
         '/display_shape_obj': (context) => const DisplayShapes(),
         '/help_page': (context) => const HelpScreen(),
         '/tutor_list_page': (context) => const TutorListPage(), // Added route
