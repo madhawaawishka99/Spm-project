@@ -73,17 +73,17 @@ class _SpeechButtonState extends State<SpeechButton> {
       Navigator.pushNamed(context, '/home_page');
       _speak("Navigating to Home Page");
       _stopListening(); // Stop after correct command
-    } else if (command.contains('mathematics')) {
-      Navigator.pushNamed(context, '/maths_obj');
-      _speak("Navigating to Maths Object Page");
+    } else if (command.contains('fruits')) {
+      Navigator.pushNamed(context, '/fruits_obj');
+      _speak("Navigating to Fruits Object Page");
       _stopListening(); // Stop after correct command
-    } else if (command.contains('science')) {
-      Navigator.pushNamed(context, '/science_obj');
-      _speak("Navigating to Science Object Page");
+    } else if (command.contains('vegetables')) {
+      Navigator.pushNamed(context, '/vegetables_obj');
+      _speak("Navigating to Vegetables Object Page");
       _stopListening(); // Stop after correct command
-    } else if (command.contains('currency')) {
-      Navigator.pushNamed(context, '/currancy_obj');
-      _speak("Navigating to Currency Object Page");
+    } else if (command.contains('packages')) {
+      Navigator.pushNamed(context, '/packages_obj');
+      _speak("Navigating to Packages Object Page");
       _stopListening(); // Stop after correct command
     } else if (command.contains('save')) {
       Navigator.pushNamed(context, '/display_shape_obj');
@@ -97,9 +97,9 @@ class _SpeechButtonState extends State<SpeechButton> {
       logout(context);
       _speak("Logging out");
       _stopListening(); // Stop after correct command
-    } else if (command.contains('quiz')) {
-      Navigator.pushNamed(context, '/quiz_page');
-      _speak("Navigating to Quiz Page");
+    } else if (command.contains('community')) {
+      Navigator.pushNamed(context, '/community_page');
+      _speak("Navigating to community Page");
       _stopListening(); // Stop after correct command
     } else if (command.contains('voice note')) {
       Navigator.pushNamed(context, '/voice_note_page');
@@ -113,6 +113,12 @@ class _SpeechButtonState extends State<SpeechButton> {
       Navigator.pushNamed(context, '/help_page');
       _speak("Navigating to Help Page");
       // Stop after correct command
+    } else if (command.contains('video')) {
+      Navigator.pushNamed(context, '/home_page');
+      _speak("Navigating to Video call screen");
+    } else if (command.contains('voice')) {
+      Navigator.pushNamed(context, '/tutor_list_page');
+      _speak("Navigating to emergency page");
     } else {
       // _speak("Unrecognized command, please try again");
       _stopListening(); // Restart listening for the correct command
@@ -159,22 +165,17 @@ class _SpeechButtonState extends State<SpeechButton> {
                     onTap: _startListening,
                     child: Container(
                       height: 60, // Make it large
-                      color: Colors
-                          .transparent, // Ensure the full area is tappable
+                      color: Colors.transparent, // Ensure the full area is tappable
                       child: FloatingActionButton.extended(
                         elevation: 0,
                         onPressed: _startListening,
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         label: Text(
-                          _speechToText.isListening
-                              ? "Listening..."
-                              : "Tap to Speak",
+                          _speechToText.isListening ? "Listening..." : "Tap to Speak",
                           style: const TextStyle(color: Colors.white),
                         ),
                         icon: Icon(
-                          _speechToText.isListening
-                              ? Icons.mic
-                              : Icons.mic_none,
+                          _speechToText.isListening ? Icons.mic : Icons.mic_none,
                           color: Colors.white,
                         ),
                       ),
