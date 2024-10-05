@@ -16,9 +16,10 @@ class _HelpScreenState extends State<HelpScreen> {
     "Home - Go to Home Screen",
     "Profile - Go to Profile ",
     "Help - Go to Help Screen",
-    "Mathematics - Navigating to Maths Object Page",
-    "Science - Navigating to Science Object Page",
-    "Currency - Navigating to Currency Object Page",
+    "Fruits - Navigating to Fruits Object Page",
+    "Vegetables - Navigating to Vegetables Object Page",
+    "Packages - Navigating to Packages Object Page",
+    "Voice - Navigating to Voice Navigation Page",
     "Save - Navigating to Object Save Page",
     "Capture - Capturing the image",
     "Logout - Logout from the account",
@@ -78,7 +79,7 @@ class _HelpScreenState extends State<HelpScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Welcome to LearnMate",
+                "Welcome to iShop!",
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,

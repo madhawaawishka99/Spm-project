@@ -73,17 +73,17 @@ class _SpeechButtonState extends State<SpeechButton> {
       Navigator.pushNamed(context, '/home_page');
       _speak("Navigating to Home Page");
       _stopListening(); // Stop after correct command
-    } else if (command.contains('mathematics')) {
-      Navigator.pushNamed(context, '/maths_obj');
-      _speak("Navigating to Maths Object Page");
+    } else if (command.contains('fruits')) {
+      Navigator.pushNamed(context, '/fruits_obj');
+      _speak("Navigating to Fruits Object Page");
       _stopListening(); // Stop after correct command
-    } else if (command.contains('science')) {
-      Navigator.pushNamed(context, '/science_obj');
-      _speak("Navigating to Science Object Page");
+    } else if (command.contains('vegetables')) {
+      Navigator.pushNamed(context, '/vegetables_obj');
+      _speak("Navigating to Vegetables Object Page");
       _stopListening(); // Stop after correct command
-    } else if (command.contains('currency')) {
-      Navigator.pushNamed(context, '/currancy_obj');
-      _speak("Navigating to Currency Object Page");
+    } else if (command.contains('packages')) {
+      Navigator.pushNamed(context, '/packages_obj');
+      _speak("Navigating to Packages Object Page");
       _stopListening(); // Stop after correct command
     } else if (command.contains('save')) {
       Navigator.pushNamed(context, '/display_shape_obj');

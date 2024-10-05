@@ -87,6 +87,9 @@ class _HomePageState extends State<HomePage> {
                 _buildNavigationCard('Packages', Icons.shop, '/packages_obj'),
                 _buildNavigationCard('Voice Chat', Icons.chat, '/tutor_list_page'),
                 _buildNavigationCard('Saved Object', Icons.save_alt, '/display_shape_obj'),
+                _buildNavigationCard('Video call Navigation', Icons.save_alt, '/home_page'),
+                _buildNavigationCard('Coummunity Space', Icons.save_alt, '/display_shape_obj'),
+              
               ],
             ),
           ),
