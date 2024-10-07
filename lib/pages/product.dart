@@ -21,7 +21,7 @@ class _EmployeeState extends State<Employee> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.blue,
         title: const Text(
           "     Add Product Details",
           style: TextStyle(
@@ -62,7 +62,7 @@ class _EmployeeState extends State<Employee> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                        color: Colors.deepPurple, // Purple border on focus
+                        color: Colors.blue, // Purple border on focus
                         width: 2.0, // Consistent width
                       ),
                       borderRadius: BorderRadius.circular(10.0),
@@ -103,7 +103,7 @@ class _EmployeeState extends State<Employee> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                        color: Colors.deepPurple, // Purple border on focus
+                        color: Colors.blue, // Purple border on focus
                         width: 2.0, // Consistent width
                       ),
                       borderRadius: BorderRadius.circular(10.0),
@@ -142,7 +142,7 @@ class _EmployeeState extends State<Employee> {
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
-                        color: Colors.deepPurple, // Purple border on focus
+                        color: Colors.blue, // Purple border on focus
                         width: 2.0, // Consistent width
                       ),
                       borderRadius: BorderRadius.circular(10.0),
@@ -165,7 +165,7 @@ class _EmployeeState extends State<Employee> {
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 50.0, vertical: 15.0),
-                      backgroundColor: Colors.deepPurple, // Use backgroundColor
+                      backgroundColor: Colors.blue, // Use backgroundColor
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),

@@ -26,9 +26,9 @@ class ObjectsPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 // Define the objects and their routes
                 final objectItems = [
-                  ['Fruits', 'assets/homeicons/fruits.png', '/fruits_obj'],
-                  ['Vegetables', 'assets/homeicons/vegetables.png', '/vegetables_obj'],
-                  ['Packages', 'assets/homeicons/packages.png', '/packages_obj'],
+                  ['Fruits', 'assets/homeicons/fruits.png', 'objects_page/fruits_obj'],
+                  ['Vegetables', 'assets/homeicons/vegetables.png', 'objects_page/vegetables_obj'],
+                  ['Packages', 'assets/homeicons/packages.png', 'objects_page/packages_obj'],
                 ];
 
                 return _buildObjectCard(
